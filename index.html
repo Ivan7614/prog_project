@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Планер</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="userHeader">
+    <img id="userAvatar" src="" alt="avatar" class="avatar hidden">
+    <span id="userGreeting"></span>
+    <button onclick="openSettings()">⚙️</button>
+  </div>
+
+  <header>
+    <div class="header-top">
+      <img src="logo.png" alt="Логотип" class="logo">
+      <h1>Планер</h1>
+      <button id="themeToggle">🌙/☀️</button>
+    </div>
+    <div class="controls">
+      <button onclick="filterTasks('all')">Усі</button>
+      <button onclick="filterTasks('today')">На сьогодні</button>
+      <button onclick="filterTasks('past')">Минулі</button>
+      <button onclick="clearAll()">Очистити всі</button>
+    </div>
+  </header>
+
+  <main>
+    <form id="taskForm">
+      <input type="text" id="taskTitle" placeholder="Назва завдання" required>
+      <input type="datetime-local" id="taskTime" required>
+      <textarea id="taskDescription" placeholder="Опис завдання"></textarea>
+      <select id="taskPriority">
+        <option value="normal">Звичайне</option>
+        <option value="important">Важливо</option>
+        <option value="personal">Особисте</option>
+      </select>
+      <button type="submit">Додати</button>
+    </form>
+    <section id="taskList"></section>
+    <section id="stats"></section>
+  </main>
+
+  <div id="settingsPanel" class="hidden">
+    <h2>⚙️ Налаштування</h2>
+    <label>Ім’я користувача:
+      <input type="text" id="userNameInput" placeholder="Введіть ім’я">
+    </label>
+    <label>Завантажити аватар:</label>
+<div class="custom-upload">
+  <label class="custom-file-button">
+    Обрати файл
+    <input type="file" id="avatarUpload" accept="image/*" hidden>
+  </label>
+  <span id="fileName">Файл не обрано</span>
+</div>
+    <label>Колір теми:
+      <select id="themeColorPicker">
+        <option value="#4f46e5">Фіолетовий</option>
+        <option value="#2d89ef">Синій</option>
+        <option value="#27ae60">Зелений</option>
+        <option value="#e67e22">Помаранчевий</option>
+      </select>
+    </label>
+    <button onclick="saveSettings()">Зберегти</button>
+    <button onclick="closeSettings()">Закрити</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
